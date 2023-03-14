@@ -15,3 +15,20 @@ export function getOfftopFromRoot(element?: HTMLElement | null): number {
   }
   return top;
 }
+
+/**
+ * 自动判断入参类型并返回目标节点
+ * @param element 字符串或DOM节点
+ * @returns DOM节点
+ */
+export function getElement(
+  element?: HTMLElement | null | string
+): HTMLElement | null {
+  if (!element) {
+    return null;
+  }
+  if (typeof element !== "string") {
+    return element;
+  }
+  return document.getElementById(element) ?? document.querySelector(element);
+}
